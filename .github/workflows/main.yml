@@ -1,0 +1,18 @@
+# When it happens
+on: # Run the actions
+  push: # On a push
+    branches: # Of these branches
+      - main
+    workflow_dispatch: # When we click
+
+# What it does
+jobs:
+  example:
+    name: "Example Job."
+    runs-on: "ubuntu-latest"
+    steps: # What specifically to do (basically shell cmds)
+      - name: "Step 1"
+        run: echo "hi"
+      - name: "Step 2"
+        run: echo "Hi again!"
+      
