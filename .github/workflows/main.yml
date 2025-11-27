@@ -7,12 +7,23 @@ on: # Run the actions
 
 # What it does
 jobs:
-  example:
-    name: "Example Job."
-    runs-on: "ubuntu-latest"
-    steps: # What specifically to do (basically shell cmds)
-      - name: "Step 1"
-        run: echo "hi"
-      - name: "Step 2"
-        run: echo "Hi again!"
-      
+  # example:
+  #   name: "Example Job."
+  #   runs-on: "ubuntu-latest"
+  #   steps: # What specifically to do (basically shell cmds)
+  #     - name: "Step 1"
+  #       run: echo "Hi"
+  #     - name: "Step 2"
+  #       run: echo "Hi again!"
+  quality_check:
+    name: "Quality Check"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Get repo."
+        uses: actions/checkout@v6
+      - name: "Install python."
+        uses: actions/setup-python@v6
+      - name: "Install libaries."
+        run: pip install -r requirements.txt
+      - name: "Run tests."
+        run: pytest
